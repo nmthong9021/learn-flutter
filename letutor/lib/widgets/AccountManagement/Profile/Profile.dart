@@ -78,7 +78,52 @@ class _ProfileState extends State<Profile> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          print("avatar");
+                          //print("avatar");
+                          showModalBottomSheet<void>(
+                            context: context,
+                            backgroundColor: Color.fromRGBO(0, 0, 0, 0.01),//Colors.black12,
+                            builder: (BuildContext context){
+                              return Container(
+                                 height: 120,
+                                 width: 250,
+                                 decoration: BoxDecoration(
+                                   color: Colors.white,
+                                   //shape: BoxShape.circle,
+                                   borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(60.0),
+                                      topRight: Radius.circular(60.0)),
+                                 ),
+                                 child: Row(
+                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                   children: [
+                                   GestureDetector(
+                                     onTap: (){
+                                       print('Library');
+                                     },
+                                     child: Column(
+                                       mainAxisAlignment: MainAxisAlignment.center,
+                                       children: [
+                                         Image.asset('assets/image.jpg', width: 100, height: 50,),
+                                         Text('Library')
+                                       ],
+                                     ),
+                                   ),
+                                   GestureDetector(
+                                     onTap: (){
+                                       print('Camera');
+                                     },
+                                     child: Column(
+                                       mainAxisAlignment: MainAxisAlignment.center,
+                                       children: [
+                                         Image.asset('assets/camera.png', width: 100, height: 50,),
+                                         Text('Camera')
+                                       ],
+                                     ),
+                                   )
+                                 ],),
+                              );
+                            }
+                          );
                         },
                         child: Container(
                           child: Badge(

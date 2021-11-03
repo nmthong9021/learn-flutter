@@ -520,6 +520,7 @@ class _HomeState extends State<Home> {
                       ),
                     )),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FilterTag(
                         onTap: () {
@@ -539,6 +540,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FilterTag(
                         onTap: () {
@@ -563,6 +565,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FilterTag(
                         onTap: () {
