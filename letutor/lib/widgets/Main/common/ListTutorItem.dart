@@ -77,7 +77,7 @@ class ListTutorItem extends StatelessWidget {
           //padding: const EdgeInsets.symmetric(vertical: 2.5, horizontal: 5),
           padding:
               const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 10),
-          margin: const EdgeInsets.only(left: 1, right: 2, bottom: 5),
+          margin: const EdgeInsets.only(left: 1, right: 2, bottom: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7.0),
               boxShadow: [
@@ -143,7 +143,9 @@ class ListTutorItem extends StatelessWidget {
                   //     child: Icon(Icons.favorite)),
                 ],
               ),
+              SizedBox(height: 5,),
               _buildListArrTitle(),
+              SizedBox(height: 5,),
               Row(
                 children: [
                   Flexible(

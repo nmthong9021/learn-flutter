@@ -54,7 +54,7 @@ class _ProfileState extends State<Profile> {
           title: Text('Profile'),
           centerTitle: true,
           toolbarHeight: 55,
-          backgroundColor: Colors.pink[300],
+          backgroundColor: Colors.pink,
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -284,7 +284,7 @@ class _ProfileState extends State<Profile> {
       style: ElevatedButton.styleFrom(
         shape: StadiumBorder(),
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
-        primary: Colors.pink[300],
+        primary: Colors.pink,
         textStyle: const TextStyle(fontSize: 22),
       ),
     );
@@ -379,7 +379,7 @@ class _ProfileState extends State<Profile> {
   Widget buildCountry() {
     return CountryListPick(
         appBar: AppBar(
-          backgroundColor: Colors.pink[300],
+          backgroundColor: Colors.pink,
           title: Text('Choose country'),
           toolbarHeight: 60,
         ),
