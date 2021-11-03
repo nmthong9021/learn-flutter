@@ -1,38 +1,26 @@
-// ignore_for_file: unnecessary_string_interpolations, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
+// ignore_for_file: unused_import, file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:letutor/widgets/Main/Tutor/ListTutor.dart';
-import '../../AccountManagement/Profile/Profile.dart';
-import '../Menu/Schedule/Schedule.dart';
-import '../Tutor/TutorDetail.dart';
-//import '../../_common/TextWithIcon.dart';
-//import 'package:one_on_one/widgets/AccountManagement/Profile/Profile.dart';
-// import 'package:one_on_one/widgets/Main/Menu/Schedule/Schedule.dart';
-// import 'package:one_on_one/widgets/Main/Tutor/TutorDetail.dart';
-// import 'package:one_on_one/widgets/_common/TextWithIcon.dart';
-import '../../../globals/strings.dart' as app_string;
 import 'dart:convert';
-//import 'package:http/http.dart' as http;
+import 'package:badges/badges.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-//import 'package:one_on_one/strings.dart';
-
-import '../Menu/menu.dart';
-import '../../_common/TextWithIcon.dart';
-import '../../../models/member.dart';
 import '../../../models/TutorClass.dart';
-import '../common/FilterTag.dart';
+import '../../AccountManagement/Profile/Profile.dart';
+import '../Tutor/TutorDetail.dart';
 import '../common/ListTutorItem.dart';
+import '../../../globals/strings.dart' as app_string;
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-  static const routeName = '/home-screen';
+
+class ListTutor extends StatefulWidget {
+  const ListTutor({Key? key}) : super(key: key);
+  static const routeName = '/list-tutor-screen';
 
   @override
-  _HomeState createState() => _HomeState();
+  _ListTutorState createState() => _ListTutorState();
 }
 
-class _HomeState extends State<Home> {
-  final _members = <Member>[]; //<dynamic>[];
+class _ListTutorState extends State<ListTutor> {
+  //final _members = <Member>[]; //<dynamic>[];
   final _tutors = <Tutor>[];
 
   final _biggerFont = const TextStyle(
@@ -333,109 +321,115 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.home,
-          size: 35,
-        ), // leading for left
-        // actions: [
-        //   // action for right
-        //   Container(
-        //       //alignment: Alignment(-10, 0),
-        //       width: 50,
-        //       margin: EdgeInsets.all(7),
-        //       decoration: BoxDecoration(
-        //         borderRadius: BorderRadius.circular(8),
-        //         color: Colors.redAccent[700],
-        //       ),
-        //       //padding: EdgeInsets.all(0),
-        //       alignment: Alignment.center, //Alignment(-1, 0),
-        //       // color: Colors.redAccent[700],
-        //       child: FittedBox(
-        //         child: IconButton(
-        //           // alignment: Alignment(-10, 0),
-        //           onPressed: () {
-        //             //print("menu nè");
-        //             Navigator.of(context).pushNamed(MenuScreen.routeName);
-        //           },
-        //           icon: Icon(
-        //             Icons.menu_rounded,
-        //             size: 32,
-        //           ),
-        //         ),
-        //       )),
-        //   // IconButton(
-        //   //   onPressed: () {},
-        //   //   icon: Icon(Icons.more_vert),
-        //   // ),
-        // ],
-
-        titleSpacing: 0,
-        title: const Text(app_string.appTitle,
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.pink,
+        title: Text('List Tutor'),
+        centerTitle: true,
         toolbarHeight: 60,
+        backgroundColor: Colors.pink,
       ),
-      endDrawer: Drawer(
-        child: ListView(
-          //padding: EdgeInsets.only(top: 30),
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.pink,
-              ),
-              currentAccountPictureSize: const Size.square(72.0),
-              accountName: Text("Nguyễn Minh Thông"),
-              accountEmail: Text("songoku.minhthong@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.orange,
-                backgroundImage: NetworkImage(
-                    'https://avatars.githubusercontent.com/u/65344054?v=4'),
-                // child: Text(
-                //   "A",
-                //   style: TextStyle(fontSize: 40.0),
-                // ),
-              ),
-            ),
-            ListTile(  
-              leading: Icon(FontAwesomeIcons.user), title: Text("Profile"),  
-              onTap: () {  
-                Navigator.of(context).pushNamed(Profile.routeName);  
-              },  
-            ),
-            ListTile(  
-              leading: Icon(FontAwesomeIcons.calendarCheck), title: Text("Schedule"),  
-              onTap: () {  
-                Navigator.of(context).pushNamed(Schedule.routeName);  
-              },  
-            ), 
-            ListTile(  
-              leading: Icon(FontAwesomeIcons.history), title: Text("History"),  
-              onTap: () {  
-                Navigator.of(context).pushNamed(Profile.routeName);  
-              },  
-            ),
-            ListTile(  
-              leading: Icon(FontAwesomeIcons.graduationCap), title: Text("Courses"),  
-              onTap: () {  
-                Navigator.of(context).pushNamed(Profile.routeName);  
-              },  
-            ),ListTile(  
-              leading: Icon(FontAwesomeIcons.userGraduate), title: Text("Become a tutor"),  
-              onTap: () {  
-                Navigator.of(context).pushNamed(Profile.routeName);  
-              },  
-            ),ListTile(  
-              leading: Icon(FontAwesomeIcons.signOutAlt), title: Text("Logout"),  
-              onTap: () {  
-                Navigator.of(context).pushNamed(Profile.routeName);  
-              },  
-            ), 
-            // TextWithIcon(title: 'Profile', onTap: (){naviMenu(Profile.routeName);}, iconData: FontAwesomeIcons.user),
-            //TextWithIcon(title: 'Schedule', onTap: (){naviMenu(Schedule.routeName);}, iconData: FontAwesomeIcons.calendarCheck),
-          ],
-        ),
-      ),
+      // appBar: AppBar(
+      //   leading: Icon(
+      //     Icons.home,
+      //     size: 35,
+      //   ), // leading for left
+      //   // actions: [
+      //   //   // action for right
+      //   //   Container(
+      //   //       //alignment: Alignment(-10, 0),
+      //   //       width: 50,
+      //   //       margin: EdgeInsets.all(7),
+      //   //       decoration: BoxDecoration(
+      //   //         borderRadius: BorderRadius.circular(8),
+      //   //         color: Colors.redAccent[700],
+      //   //       ),
+      //   //       //padding: EdgeInsets.all(0),
+      //   //       alignment: Alignment.center, //Alignment(-1, 0),
+      //   //       // color: Colors.redAccent[700],
+      //   //       child: FittedBox(
+      //   //         child: IconButton(
+      //   //           // alignment: Alignment(-10, 0),
+      //   //           onPressed: () {
+      //   //             //print("menu nè");
+      //   //             Navigator.of(context).pushNamed(MenuScreen.routeName);
+      //   //           },
+      //   //           icon: Icon(
+      //   //             Icons.menu_rounded,
+      //   //             size: 32,
+      //   //           ),
+      //   //         ),
+      //   //       )),
+      //   //   // IconButton(
+      //   //   //   onPressed: () {},
+      //   //   //   icon: Icon(Icons.more_vert),
+      //   //   // ),
+      //   // ],
+
+      //   titleSpacing: 0,
+      //   title: const Text(app_string.appTitle,
+      //       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+      //   backgroundColor: Colors.pink,
+      //   toolbarHeight: 60,
+      // ),
+      // endDrawer: Drawer(
+      //   child: ListView(
+      //     //padding: EdgeInsets.only(top: 30),
+      //     padding: EdgeInsets.zero,
+      //     children: [
+      //       UserAccountsDrawerHeader(
+      //         decoration: BoxDecoration(
+      //           color: Colors.pink,
+      //         ),
+      //         currentAccountPictureSize: const Size.square(72.0),
+      //         accountName: Text("Nguyễn Minh Thông"),
+      //         accountEmail: Text("songoku.minhthong@gmail.com"),
+      //         currentAccountPicture: CircleAvatar(
+      //           backgroundColor: Colors.orange,
+      //           backgroundImage: NetworkImage(
+      //               'https://avatars.githubusercontent.com/u/65344054?v=4'),
+      //           // child: Text(
+      //           //   "A",
+      //           //   style: TextStyle(fontSize: 40.0),
+      //           // ),
+      //         ),
+      //       ),
+      //       ListTile(  
+      //         leading: Icon(FontAwesomeIcons.user), title: Text("Profile"),  
+      //         onTap: () {  
+      //           Navigator.of(context).pushNamed(Profile.routeName);  
+      //         },  
+      //       ),
+      //       ListTile(  
+      //         leading: Icon(FontAwesomeIcons.calendarCheck), title: Text("Schedule"),  
+      //         onTap: () {  
+      //           Navigator.of(context).pushNamed(Profile.routeName);  
+      //         },  
+      //       ), 
+      //       ListTile(  
+      //         leading: Icon(FontAwesomeIcons.history), title: Text("History"),  
+      //         onTap: () {  
+      //           Navigator.of(context).pushNamed(Profile.routeName);  
+      //         },  
+      //       ),
+      //       ListTile(  
+      //         leading: Icon(FontAwesomeIcons.graduationCap), title: Text("Courses"),  
+      //         onTap: () {  
+      //           Navigator.of(context).pushNamed(Profile.routeName);  
+      //         },  
+      //       ),ListTile(  
+      //         leading: Icon(FontAwesomeIcons.userGraduate), title: Text("Become a tutor"),  
+      //         onTap: () {  
+      //           Navigator.of(context).pushNamed(Profile.routeName);  
+      //         },  
+      //       ),ListTile(  
+      //         leading: Icon(FontAwesomeIcons.signOutAlt), title: Text("Logout"),  
+      //         onTap: () {  
+      //           Navigator.of(context).pushNamed(Profile.routeName);  
+      //         },  
+      //       ), 
+      //       // TextWithIcon(title: 'Profile', onTap: (){naviMenu(Profile.routeName);}, iconData: FontAwesomeIcons.user),
+      //       //TextWithIcon(title: 'Schedule', onTap: (){naviMenu(Schedule.routeName);}, iconData: FontAwesomeIcons.calendarCheck),
+      //     ],
+      //   ),
+      // ),
       body: //const Center(child: Text('GHFlutter 3 có state nè')),
           // ListView.builder(
           //     padding: const EdgeInsets.all(16.0),
@@ -444,63 +438,63 @@ class _HomeState extends State<Home> {
           //       return _buildRow(position);
           //     }),
           ListView(scrollDirection: Axis.vertical, children: <Widget>[
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(color: Color.fromRGBO(12, 61, 223, 1)),
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 8, bottom: 7.5),
-                    child: Text(
-                      'Total lesson time: 0 hours 0 minutes',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 7.5),
-                    child: Text(
-                      'Upcoming Lesson',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      'Sun, 24 Oct 21 20:30 - 20:55',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      print('Enter lesson room');
-                    },
-                    child: Container(
-                      height: 40.0,
-                      //padding: const EdgeInsets.all(8.0),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      margin: const EdgeInsets.only(
-                          left: 110, right: 110, top: 5, bottom: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.0),
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black)),
-                      child: const Center(
-                        child: Text(
-                          'Enter lesson room',
-                          style: TextStyle(
-                              color: Color.fromRGBO(12, 61, 223, 1),
-                              fontSize: 16),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+        // Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     Container(
+        //       decoration: BoxDecoration(color: Color.fromRGBO(12, 61, 223, 1)),
+        //       child: Column(
+        //         children: [
+        //           Container(
+        //             margin: const EdgeInsets.only(top: 8, bottom: 7.5),
+        //             child: Text(
+        //               'Total lesson time: 0 hours 0 minutes',
+        //               style: TextStyle(color: Colors.white, fontSize: 16),
+        //             ),
+        //           ),
+        //           Container(
+        //             margin: const EdgeInsets.only(bottom: 7.5),
+        //             child: Text(
+        //               'Upcoming Lesson',
+        //               style: TextStyle(color: Colors.white, fontSize: 16),
+        //             ),
+        //           ),
+        //           Container(
+        //             margin: const EdgeInsets.only(bottom: 8),
+        //             child: Text(
+        //               'Sun, 24 Oct 21 20:30 - 20:55',
+        //               style: TextStyle(color: Colors.white, fontSize: 16),
+        //             ),
+        //           ),
+        //           GestureDetector(
+        //             onTap: () {
+        //               print('Enter lesson room');
+        //             },
+        //             child: Container(
+        //               height: 40.0,
+        //               //padding: const EdgeInsets.all(8.0),
+        //               padding: const EdgeInsets.symmetric(vertical: 8),
+        //               margin: const EdgeInsets.only(
+        //                   left: 110, right: 110, top: 5, bottom: 10),
+        //               decoration: BoxDecoration(
+        //                   borderRadius: BorderRadius.circular(15.0),
+        //                   color: Colors.white,
+        //                   border: Border.all(color: Colors.black)),
+        //               child: const Center(
+        //                 child: Text(
+        //                   'Enter lesson room',
+        //                   style: TextStyle(
+        //                       color: Color.fromRGBO(12, 61, 223, 1),
+        //                       fontSize: 16),
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     )
+        //   ],
+        // ),
         Container(
             //color: Colors.yellow,
             margin:
@@ -520,78 +514,6 @@ class _HomeState extends State<Home> {
                       ),
                     )),
                 Row(
-                  children: [
-                    FilterTag(
-                        onTap: () {
-                          print('All');
-                        },
-                        title: 'All'),
-                    FilterTag(
-                        onTap: () {
-                          print('ConversationEnglish');
-                        },
-                        title: 'ConversationEnglish'),
-                    FilterTag(
-                        onTap: () {
-                          print('BussinessEnglish');
-                        },
-                        title: 'BussinessEnglish'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    FilterTag(
-                        onTap: () {
-                          print('EnglishforKids');
-                        },
-                        title: 'EnglishforKids'),
-                    FilterTag(
-                        onTap: () {
-                          print('STARTERS');
-                        },
-                        title: 'STARTERS'),
-                    FilterTag(
-                        onTap: () {
-                          print('FLYERS');
-                        },
-                        title: 'FLYERS'),
-                    FilterTag(
-                        onTap: () {
-                          print('KETS');
-                        },
-                        title: 'KETS'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    FilterTag(
-                        onTap: () {
-                          print('MOVERS');
-                        },
-                        title: 'MOVERS'),
-                    FilterTag(
-                        onTap: () {
-                          print('PETS');
-                        },
-                        title: 'PETS'),
-                    FilterTag(
-                        onTap: () {
-                          print('IELTS');
-                        },
-                        title: 'IELTS'),
-                    FilterTag(
-                        onTap: () {
-                          print('TOEFL');
-                        },
-                        title: 'TOEFL'),
-                    FilterTag(
-                        onTap: () {
-                          print('TOEIC');
-                        },
-                        title: 'TOEIC'),
-                  ],
-                ),
-                Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
@@ -606,23 +528,18 @@ class _HomeState extends State<Home> {
                               fontSize: 18,
                             ),
                           )),
-                      Container(
-                          margin: const EdgeInsets.only(
-                            top: 20,
-                            bottom: 5,
-                          ),
-                          child: GestureDetector(
-                            onTap:(){ 
-                              Navigator.of(context).pushNamed(ListTutor.routeName);
-                            },
-                            child: Text(
-                              'See All >',
-                              style: TextStyle(
-                                  //fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Color.fromRGBO(12, 61, 223, 1)),
-                            ),
-                          )),
+                      // Container(
+                      //     margin: const EdgeInsets.only(
+                      //       top: 20,
+                      //       bottom: 5,
+                      //     ),
+                      //     child: Text(
+                      //       'See All >',
+                      //       style: TextStyle(
+                      //           //fontWeight: FontWeight.bold,
+                      //           fontSize: 16,
+                      //           color: Color.fromRGBO(12, 61, 223, 1)),
+                      //     )),
                     ]),
                 Stack(
                   children: [_buildTutorList()],

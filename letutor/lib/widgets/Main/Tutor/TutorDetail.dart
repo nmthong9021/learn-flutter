@@ -16,7 +16,7 @@ class TutorDetail extends StatelessWidget {
         title: Text('Tutor Detail'),
         centerTitle: true,
         toolbarHeight: 55,
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.pink,
       ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,

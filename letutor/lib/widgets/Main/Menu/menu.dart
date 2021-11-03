@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../Home/home.dart';
+// import '../Home/home.dart';
+// import '../Index.dart';
 
 class MenuScreen extends StatelessWidget {
   static const routeName = '/menu-screen';
@@ -15,7 +16,7 @@ class MenuScreen extends StatelessWidget {
         title: Text('Menu Screen'),
         centerTitle: true,
         toolbarHeight: 60,
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.pink,
       ),
       body:Container(
         margin: EdgeInsets.only(left: 25, top:0, right: 25, bottom:0),
@@ -138,14 +139,14 @@ class MenuScreen extends StatelessWidget {
                       ),
                     ))),
             SizedBox(height: 20),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(Home.routeName);
-                },
-                child: Text('BACK TO HOME'),
-              ),
-            ),
+            // Center(
+            //   child: TextButton(
+            //     onPressed: () {
+            //       Navigator.of(context).pushNamed(Home.routeName);
+            //     },
+            //     child: Text('BACK TO HOME'),
+            //   ),
+            // ),
             Center(
               child: TextButton(
                 onPressed: () {

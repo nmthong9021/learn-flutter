@@ -16,7 +16,7 @@ class Schedule extends StatelessWidget {
         title: Text('Schedule'),
         centerTitle: true,
         toolbarHeight: 55,
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.pink,
       ),
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
